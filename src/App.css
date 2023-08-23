@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+nav{
+  background-color: rgb(167, 235, 235);
+}
+nav ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+
+}
+nav li{
+  padding: 5px;
+  color: rgb(46, 46, 46);
+}
