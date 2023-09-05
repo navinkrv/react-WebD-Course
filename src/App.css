@@ -2,16 +2,61 @@
   margin: 0;
   padding: 0;
 }
-nav{
-  background-color: rgb(167, 235, 235);
+
+h1{
+  text-align: center;
+  padding: 10px;
+  border-bottom: 2px solid grey;
 }
-nav ul{
-  list-style: none;
+
+.tree{
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  flex-direction: column;
+}
+/* ### Tree structure ### */
+.node-container{
+  position: relative;
+  width: fit-content;
+}
+
+.node{
   display: flex;
   flex-direction: row;
-
-}
-nav li{
+  justify-content: space-between;
+  width: 100px;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 10px;
   padding: 5px;
-  color: rgb(46, 46, 46);
+}
+.node > button{
+  all:unset;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.child{
+  position: absolute;
+  right: -100%;
+}
+
+.hConnector{
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  background-color: black;
+  left: -30%;
+}
+
+.vConnector{
+  position: absolute;
+    width: 2px;
+    height: 68%;
+    background-color: black;
+    top: -18%;
+    left: -30%;
 }

@@ -1,29 +1,40 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from "./components/Navbar"
-import Paragraph from './components/Paragraph';
+import Tree from './components/Tree';
 
 function App() {
-  // let num1;
-  // let num2;
+
   
-  const [num1,setNum1] = useState(0)
-  const [num2,setNum2] = useState(0)
-
-  const [isVisible,setIsVisible] = useState(false)
-
-  function submitHandler(event){
-    event.preventDefault()
-    // num1 = event.target.num1.value
-    // num2 = event.target.num2.value
-
-    setNum1(event.target.num1.value)
-    setNum2(event.target.num2.value)
-  }
-
-  function toggleHandler(){
-    setIsVisible(!isVisible)
-  }
+  const treeData = [
+    {
+      id: 1,
+      name: "Node 1",
+      children: [
+        //first child
+        {
+          id: 2,
+          name: "Node 1.1",
+          children: [
+            { id: 3, name: "Node 1.1.1" },
+            { id: 4, name: "Node 1.1.2" },
+            { id: 9, name: "Node 1.1.3" },
+          ],
+        },
+        // second child
+        { id: 5, name: "Node 1.2" },
+        //third child
+        {
+          id: 6,
+          name: "Node 1.3",
+          children: [
+            { id: 7, name: "Node 1.3.1" },
+            { id: 8, name: "Node 1.3.2" },
+          ],
+        },
+      ],
+    },
+  ];
 
   /*
      variables are two types in react
@@ -39,30 +50,18 @@ function App() {
     - npm packages
   */
 
-    function name(){
-      console.log("name")
-    }
-    name()
+    // states 
+    // destructuring {objects}, [arrays]
+    // exports (default and {non defaults} )
+    // props is an object
+    
+  
 
   return (
-    <div>
+    <div className='tree'>
        <Navbar/>
-        <section style={{backgroundColor:isVisible?"red":"transparent"}}>
-        <form onSubmit={submitHandler}>
-          <input type="number" name="num1" />
-          <input type="number" name="num2" />
-          <input type="submit" value="submit" />
-        </form>
-          <div className="result">{num1+num2}</div>
-       </section>
+        <Tree data={treeData}/>
        
-
-       <button onClick={toggleHandler}>Toggle</button>
-       <Paragraph data="this is a paragraph" />
-       <Paragraph data="this is a paragraph" />
-       <Paragraph data="this is a paragraph" />
-       <Paragraph data="this is a paragraph" />
-       <Paragraph data="this is a paragraph" />
     </div>
   );
 }
