@@ -3,7 +3,8 @@ import React,{useState} from 'react'
 export default function Tree(props) {
     const {data} = props; //destructuring
     const [opened,setOpened] = useState(false)
-    // console.log(data);
+    const fData = data[0]
+    console.log(fData.children);
 
     function toggleHandler(){
       // console.log("clicked!");
@@ -12,15 +13,33 @@ export default function Tree(props) {
 
 
   return (
-    <div className='node-container' >
+    <div className={"node-container "} >
       <div className="node">
-        <h3>node 1</h3>
+     {props.type =="child"? <div className="hConnector"></div>:""}
+        <h3>{fData.name}</h3>
         <button onClick={toggleHandler}>{opened== true ? "-" : "+"}</button>
       </div>
+      {props.type =="child"? <div className={opened == true ? "vConnector openedVConnector":"vConnector"}></div>:""}
 
-    {opened?<Tree/>:""}
+    {opened && fData.children?
+   
+   <div className='child'>
 
-    <div className="node-container child">
+     { fData.children ? fData.children.map((item)=>{
+        console.log(item);
+        return(
+        
+            <Tree data={[item]} type="child"/>
+
+            
+            
+            )
+          }):""}
+   
+          </div>
+    :""}
+
+    {/* <div className="node-container child">
 
       <div className="node ">
           <div className="hConnector"></div>
@@ -28,8 +47,7 @@ export default function Tree(props) {
           <button onClick={toggleHandler}>{opened== true ? "-" : "+"}</button>
 
       </div>
-      <div className="vConnector"></div>
-    </div>
+    </div> */}
       
     </div>
   )

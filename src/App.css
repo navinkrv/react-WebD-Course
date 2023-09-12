@@ -25,12 +25,13 @@ h1{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100px;
+  width: 140px;
   align-items: center;
   border: 2px solid black;
   border-radius: 5px;
   margin: 10px;
   padding: 5px;
+  position: relative;
 }
 .node > button{
   all:unset;
@@ -40,7 +41,7 @@ h1{
 }
 
 .child{
-  position: absolute;
+  position: relative;
   right: -100%;
 }
 
@@ -49,14 +50,27 @@ h1{
   width: 50px;
   height: 2px;
   background-color: black;
-  left: -30%;
+  left: -35%;
+  top:49%
 }
 
 .vConnector{
-  position: absolute;
+      position: absolute;
     width: 2px;
-    height: 68%;
+    height: 130%;
     background-color: black;
-    top: -18%;
-    left: -30%;
+    top: -23%;
+    left: -24%;
+}
+
+/* pseudoselectors */
+.child>.node-container:last-child>.vConnector {
+    height: 34px;
+    top: -9%;
+    transform: translateY(-8px);
+}
+
+
+.openedVConnector{
+   transform: translateY(14%)
 }
